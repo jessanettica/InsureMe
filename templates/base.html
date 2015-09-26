@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/static/insureme.css">
 </head>
 <body>
@@ -25,26 +25,17 @@
                     <input id="distance-slider" class="distance" type="range" min="1" max="50" value="10" step="1" style="display:inline-block"/>
                     <input id="distance" class="distance form-control" type="number" min="1" max="50" value="10" style="display:inline-block; width: 60px" required>
                 </div>
+                <button id="search-btn" type="button" class="btn btn-default">Search</button>
             </form>
         </div>
         <div class="col-xs-12 col-sm-9"></div>
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script type="text/javascript">
-var defaultBounds = new google.maps.LatLngBounds(
-  new google.maps.LatLng(-33.8902, 151.1759),
-  new google.maps.LatLng(-33.8474, 151.2631));
+<script src="/static/jquery-2.1.4.min.js"></script>
+<script src="/static/googlemaps.js"></script>
+<script src="/static/bootstrap.min.js"></script>
+<script src="/static/insureme.js"></script>
 
-var input = document.getElementById('distance-field');
-var options = {
-  bounds: defaultBounds,
-  types: ['establishment']
-};
-
-autocomplete = new google.maps.places.Autocomplete(input, options);
-</script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,5 +1,7 @@
-from flask import Flask, render_template, session
+from flask import Flask, render_template
+import os
 import googlemaps
+
 
 app = Flask(__name__)
 app.secret_key = "SECRET"
@@ -31,10 +33,14 @@ def locate_user():
 	latitude = location_data.get('lat')
 	longitude = location_data.get('lng')
 	radius = request.form.get("radius")
-	
+
+	address_dict = {"lat": latitude, "long": longitude, "radius": radius}
+
 	return
 
 @app.route('/donut_docs.json', methods=["GET"])
+
+	return jsonify(address_dict)
 
 
 ###############################################

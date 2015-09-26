@@ -1,2 +1,5 @@
 secrets.sh
 env/
+*bootstrap*
+*jquery*
+*googlemaps*

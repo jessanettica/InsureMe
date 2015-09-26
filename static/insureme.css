@@ -1,0 +1,10 @@
+html, body {
+	height: 100%;
+}
+
+#sidebar {
+	border: 1px solid #E7E7E7;
+	background-color: #F8F8F8;
+	height: 700px;
+	padding: 1em;
+}

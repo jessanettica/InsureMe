@@ -16,13 +16,13 @@ def query_for_doctors():
         last_name = doctor.get('profile').get('last_name')
         title = doctor.get('profile').get('title')
         gender = doctor.get('profile').get('gender')
-        # ratings = doctor.get('profile').get('ratings').get('rating')
+        ratings = doctor.get('ratings')[0].get('rating')
 
-        # practice = doctor.get('practices').get('name')
-        # insurance_id = doctor.get('practices').get('insurance_uids')
-        # zipcode = doctor.get('practices').get('zip')
+        practice = doctor.get('practices')[0].get('name')
+        insurance_id = doctor.get('practices')[0].get('insurance_uids')
+        zipcode = doctor.get('practices')[0].get('visit_address').get('zip')
 
-        print first_name, last_name, title, gender
+        print first_name, last_name, title, gender, ratings, practice, zipcode
 
 if __name__ == "__main__":
 

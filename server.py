@@ -32,7 +32,9 @@ def locate_user():
 	longitude = location_data.get('lng')
 	radius = request.form.get("radius")
 	
-	return latitude, longitude, radius
+	return
+
+@app.route('/donut_docs.json', methods=["GET"])
 
 
 ###############################################

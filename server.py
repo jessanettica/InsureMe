@@ -33,8 +33,10 @@ def locate_user():
 	latitude = location_data.get('lat')
 	longitude = location_data.get('lng')
 	radius = request.form.get("radius")
+
+	address_dict = {"lat": latitude, "long": longitude, "radius": radius}
 	
-	return
+	return jsonify(address_dict)
 
 
 ###############################################

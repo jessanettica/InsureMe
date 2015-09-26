@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 from flask import Flask, render_template, session
 import googlemaps
-=======
-from flask import Flask, render_template
->>>>>>> c306ccaa08084bd8f50ebc44f7108afaadb58c25
+
 
 app = Flask(__name__)
 app.secret_key = "SECRET"
@@ -35,8 +32,10 @@ def locate_user():
 	latitude = location_data.get('lat')
 	longitude = location_data.get('lng')
 	radius = request.form.get("radius")
+
+	address_dict = {"lat": latitude, "long": longitude, "radius": radius}
 	
-	return latitude, longitude, radius
+	return jsonify(address_dict)
 
 
 ###############################################

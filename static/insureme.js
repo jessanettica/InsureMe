@@ -6,10 +6,8 @@ $('#search-btn').on('click', postLocation);
 
 
 ////////////////////////////////////////////////////
-// Functions
-
-
 // Goople Maps Autocomplete 
+
 var address = document.getElementById('address');
 var options = {
     types: ['address'] 
@@ -18,7 +16,8 @@ var options = {
 var autocomplete_address = new google.maps.places.Autocomplete(address, options);
 
 
-
+////////////////////////////////////////////////////
+// Functions
 
 function syncDistanceValues(evt) {
     var value = $(this).val();

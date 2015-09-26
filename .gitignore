@@ -1,5 +1,3 @@
 secrets.sh
 env/
-*bootstrap*
-*jquery*
 *secret*

@@ -31,9 +31,22 @@ function postLocation() {
         radius: $('#distance').val()
     };
 
-    $.post('/locate', locationData, function(response) {
-
-    	// This is where we update the D3
-
+    $.ajax({
+        url: '/locate',
+        method: 'POST',
+        data: locationData,
+        success: getD3,
+        error: function () { alert("An Error Occurred in postLocation") }
     });
+
+}
+
+
+function getD3() {
+
+    $.ajax({
+        url: '/get_d3',
+        error: function() { alert( "An Error Occurred in getD3" ); }
+    });
+
 }

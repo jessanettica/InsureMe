@@ -1,5 +1,6 @@
 html, body {
 	height: 100%;
+	font-family: ProximaNovaReg, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 #sidebar {
@@ -8,3 +9,15 @@ html, body {
 	height: 700px;
 	padding: 1em;
 }
+
+.btn {
+	color: white;
+	background-color: #BB3794;
+	border: 1px solid #BB3794;
+}
+
+.btn:hover {
+	color: white;
+	background-color: #A83285;
+	border: 1px solid #BB3794;
+};

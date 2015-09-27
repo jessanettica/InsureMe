@@ -162,7 +162,7 @@ def query_for_insurance():
 
     return insurances
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     
     # print build_ins_json(47.811436, -112.187988,50)
     # print query_for_doctors(47.811436, -112.187988,50)

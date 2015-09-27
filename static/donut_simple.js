@@ -46,6 +46,8 @@ d3.json("/donut_docs.json", function(error, root) {
 
 d3.select(self.frameElement).style("height", height + "px");
 
+$('#loading').addClass('hidden');
+
 // Interpolate the scales!
 function arcTween(d) {
   var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),

@@ -27,10 +27,7 @@ function postLocation(evt) {
         url: '/locate',
         method: 'POST',
         data: locationData,
-        success: function () {
-            $('#loading').addClass('hidden');
-            getD3();
-        },
+        success: getD3(),
         error: function () {
             $('#loading').addClass('hidden');
             $('#failure-report').removeClass('hidden');

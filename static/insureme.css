@@ -67,3 +67,7 @@ span.distance {
 #loading {
 	width: 80px;
 }
+
+#address {
+	width: 15em;
+}

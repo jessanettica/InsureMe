@@ -31,7 +31,7 @@ html, body {
 }
 
 #logo-img {
-	padding: 0.25em 15px;
+	padding: 0.25em 0 0.25em 15px;
 }
 
 .logo-text {

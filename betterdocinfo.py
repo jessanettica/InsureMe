@@ -6,24 +6,32 @@ def build_ins_json(lat, lon, urange):
 
     return_dict = {}
     insurance_providers = []
-    # insurance_prov_dict = {}
     docs_by_rating = []
 
     docs_dict = query_for_doctors(lat, lon, urange)
     
-    return_dict["name"] = "area info"
+    return_dict["name"] = "INSURANCE NEAR YOU"
     return_dict["children"] = insurance_providers
 
     for key, value in docs_dict.items():
+        genders = []
+        for jdex, gender_count in enumerate(value[2]):
+            if jdex == 0:
+                gender_dict = {"name": "male", "size": gender_count, "children": []}
+                genders.append(gender_dict)
+            else:
+                gender_dict = {"name": "female", "size": gender_count, "children": []}
+                genders.append(gender_dict)
+
         ratings = []
         for idx, rate in enumerate(value[1]):
             if idx == 0:
-                rating_dict = {"name": "no rating", "size": rate, "children": []}
+                rating_dict = {"name": "no rating", "size": rate, "children": genders}
             else:
-                rating_dict = {"name": idx, "size": rate, "children": []}
+                rating_dict = {"name": idx, "size": rate, "children": genders}
             ratings.append(rating_dict)
         insurance_providers.append({"name": key, "size": value[0], "children": ratings})
-        # insurance_prov_dict["children"] = docs_by_rating
+
     return return_dict
 
 def query_for_doctors(lat, lon, urange):
@@ -58,7 +66,7 @@ def query_for_doctors(lat, lon, urange):
     response = requests.get(endpoint, params=query_params)
 
     doctors = response.json()['data']
-    print "doctors", doctors
+
     for doctor in doctors:
         rating_0 = 0
         rating_1 = 0
@@ -67,10 +75,18 @@ def query_for_doctors(lat, lon, urange):
         rating_4 = 0
         rating_5 = 0
 
+        male = 0 #will be zero indx in sublist
+        female = 0 #will be 1 indx in sublist
+
         first_name = doctor.get('profile').get('first_name')
         last_name = doctor.get('profile').get('last_name')
         title = doctor.get('profile').get('title')
         gender = doctor.get('profile').get('gender')
+
+        if gender == "male":
+            male += 1
+        if gender == "female":
+            female += 1
         
         if doctor.get('ratings'):
             ratings = doctor.get('ratings')[0].get('rating')
@@ -96,7 +112,7 @@ def query_for_doctors(lat, lon, urange):
 
         #key: ins. ID; value = [#docs ins covers, [#rating 0, 1, 2, 3 4, 5]]
         for i in insurance_ids:
-            doc_dict.setdefault(i, [0, [0, 0, 0, 0, 0, 0]])
+            doc_dict.setdefault(i, [0, [0, 0, 0, 0, 0, 0], [0, 0]])
             doc_dict[i][0] += 1
             doc_dict[i][1][0] += rating_0
             doc_dict[i][1][1] += rating_1
@@ -104,6 +120,8 @@ def query_for_doctors(lat, lon, urange):
             doc_dict[i][1][3] += rating_3
             doc_dict[i][1][4] += rating_4
             doc_dict[i][1][5] += rating_5
+            doc_dict[i][2][0] += male
+            doc_dict[i][2][1] += female 
         doc_count += 1
     
     # limit_to_end = num_responses%100
@@ -139,8 +157,6 @@ def query_for_doctors(lat, lon, urange):
     #         doc_dict[i] += 1
     #     doc_count += 1
 
-    print "doc_count", doc_count
-
     return doc_dict
 
 def query_for_insurance():
@@ -162,7 +178,7 @@ def query_for_insurance():
 
     return insurances
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     
     # print build_ins_json(47.811436, -112.187988,50)
     # print query_for_doctors(47.811436, -112.187988,50)

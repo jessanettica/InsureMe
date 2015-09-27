@@ -17,7 +17,7 @@ function syncDistanceValues() {
 function postLocation(evt) {
     evt.preventDefault();
     $('#loading').removeClass('hidden');
-
+    $('#sunburst').html('');
     var locationData = {
         address: $('#address').val(),
         radius: $('#distance').val()

@@ -13,8 +13,8 @@ function syncDistanceValues() {
     $('span.distance').text(value);
 }
 
-function postLocation() {
-
+function postLocation(evt) {
+    evt.preventDefault();
     $('#loading').removeClass('hidden');
 
     var locationData = {
@@ -38,6 +38,7 @@ function getD3() {
 
     $.ajax({
         url: '/get_d3',
+        success: function (response) { console.log('response') },
         error: function () { $('#failure-report').removeClass('hidden') },
         complete: function () { $('#loading').addClass('hidden') }
     });

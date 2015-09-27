@@ -38,7 +38,7 @@ function getD3() {
 
     $.ajax({
         url: '/get_d3',
-        error: function() { console.log( "An Error Occurred in getD3" ); },
+        error: function () { $('#failure-report').removeClass('hidden') },
         complete: function () { $('#loading').addClass('hidden') }
     });
 

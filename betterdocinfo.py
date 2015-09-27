@@ -163,7 +163,7 @@ def query_for_insurance():
     return insurances
 
 if __name__ == "__main__":
-    
+    pass
     # print build_ins_json(47.811436, -112.187988,50)
     # print query_for_doctors(47.811436, -112.187988,50)
-#     # query_for_insurance()
+    # query_for_insurance()

@@ -53,7 +53,6 @@ def make_doc_donut():
 	radius = session.get('radius')
 
 	address_dict = build_ins_json(latitude,longitude,radius)
-	print address_dict
 
 	return jsonify(address_dict)
 

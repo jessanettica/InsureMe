@@ -21,20 +21,65 @@ def build_ins_json(lat, lon, urange):
 
 def query_for_doctors(lat, lon, urange):
     """Show Doctor Information filtered by location"""
+
     query_params = {'user_key': 'd9d6a34e907e4b42e1d4ad7a25f7998e',
                     'location': str(lat)+","+str(lon)+","+str(urange),
                     'skip': '0',
-                    'limit': '100'
+                    'limit': '1'
                     }
 
     endpoint = 'https://api.betterdoctor.com/2015-01-27/doctors?'
     response = requests.get(endpoint, params=query_params)
-    print response.json()
+    num_responses = response.json()['meta'].get('total')
+    print "num_responses", num_responses
+    
+    for num in range(1, num_responses, 100):
+        limit = num
+        query_params = {'user_key': 'd9d6a34e907e4b42e1d4ad7a25f7998e',
+                    'location': str(lat)+","+str(lon)+","+str(urange),
+                    'skip': '0',
+                    'limit': str(limit)
+                    }
+
+        endpoint = 'https://api.betterdoctor.com/2015-01-27/doctors?'
+        response = requests.get(endpoint, params=query_params)
+
+        doctors = response.json()['data']
+
+        doc_dict = {}
+        doc_count = 0
+
+        for doctor in doctors:
+
+            first_name = doctor.get('profile').get('first_name')
+            last_name = doctor.get('profile').get('last_name')
+            title = doctor.get('profile').get('title')
+            gender = doctor.get('profile').get('gender')
+            # ratings = doctor.get('ratings')[0].get('rating')
+
+            specialties = doctor.get('specialties')[0].get('name') #returns list
+
+            practice = doctor.get('practices')[0].get('name')
+            
+            insurance_ids = doctor.get('practices')[0].get('insurance_uids') #returns list
+            zipcode = doctor.get('practices')[0].get('visit_address').get('zip')
+
+            for i in insurance_ids:
+                doc_dict.setdefault(i, 0)
+                doc_dict[i] += 1
+            doc_count += 1
+    
+    limit_to_end = num_responses%100
+    query_params = {'user_key': 'd9d6a34e907e4b42e1d4ad7a25f7998e',
+                'location': str(lat)+","+str(lon)+","+str(urange),
+                'skip': '0',
+                'limit': str(limit_to_end)
+                }
+
+    endpoint = 'https://api.betterdoctor.com/2015-01-27/doctors?'
+    response = requests.get(endpoint, params=query_params)
+
     doctors = response.json()['data']
-
-    # ins_dict = query_for_insurance()
-
-    doc_dict = {}
 
     for doctor in doctors:
 
@@ -43,18 +88,21 @@ def query_for_doctors(lat, lon, urange):
         title = doctor.get('profile').get('title')
         gender = doctor.get('profile').get('gender')
         # ratings = doctor.get('ratings')[0].get('rating')
-        #returns list
-        specialties = doctor.get('specialties')[0].get('name')
+        
+        specialties = doctor.get('specialties')[0].get('name') #returns list
 
         practice = doctor.get('practices')[0].get('name')
-        #returns list
-        insurance_ids = doctor.get('practices')[0].get('insurance_uids')
+        
+        insurance_ids = doctor.get('practices')[0].get('insurance_uids') #returns list
         zipcode = doctor.get('practices')[0].get('visit_address').get('zip')
 
         for i in insurance_ids:
             # name = ins_dict.get(i)
             doc_dict.setdefault(i, 0)
             doc_dict[i] += 1
+        doc_count += 1
+
+    print "doc_count", doc_count
 
     return doc_dict
 
@@ -78,7 +126,7 @@ def query_for_insurance():
     return insurances
 
 # if __name__ == "__main__":
-
-#     build_ins_json(37.773,-122.413,100)
+    
+    # build_ins_json(37.773,-122.413,100)
 #     # query_for_doctors()
 #     # query_for_insurance()

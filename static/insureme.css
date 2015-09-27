@@ -1,6 +1,8 @@
 html, body {
 	height: 100%;
 	font-family: ProximaNovaReg, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	background-image: url('');
+	background-size: cover;
 }
 
 #sidebar {
@@ -32,4 +34,22 @@ html, body {
 
 .navbar {
 	background-color: white;
+}
+
+#logo {
+	padding: 7px 15px;
+}
+
+span.distance {
+	display: inline-block;
+	width: 1em;
+	text-align: right;
+}
+
+#status {
+	text-align: center;
+}
+
+#loading {
+	width: 80px;
 }

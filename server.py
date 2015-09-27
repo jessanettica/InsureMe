@@ -13,6 +13,7 @@ app.secret_key = "SECRET"
 def home():
 	return render_template('base.html')
 
+
 @app.route('/locate', methods=["POST"])
 def locate_user():
 	""" uses google maps geocode to get lat/long of address inputted by user & the distance from address to search (radius)"""
@@ -41,6 +42,7 @@ def locate_user():
 	session["radius"] = radius
 
 	return "success"
+
 
 @app.route('/donut_docs.json', methods=["GET"])
 def make_doc_donut():

@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, flash, session, jso
 import os
 import googlemaps
 from betterdocinfo import build_ins_json
+from betterdocinfo import query_for_insurance
 
 
 app = Flask(__name__)
@@ -9,9 +10,10 @@ app.secret_key = "SECRET"
 
 ###############################################
 # Routes
-
+# insurance_info = {}
 @app.route('/')
 def home():
+	# insurance_info = query_for_insurance()
 	return render_template('base.html')
 
 

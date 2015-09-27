@@ -20,4 +20,8 @@ html, body {
 	color: white;
 	background-color: #962C76;
 	border: 1px solid #BB3794;
-};
+}
+
+.form-control {
+	border-radius: 3px;
+}

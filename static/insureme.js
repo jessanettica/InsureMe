@@ -3,25 +3,14 @@
 
 $('.distance').on('input', syncDistanceValues);
 $('#search-btn').on('click', postLocation);
-
-
-////////////////////////////////////////////////////
-// Goople Maps Autocomplete 
-
-var address = document.getElementById('address');
-var options = {
-    types: ['address'] 
-};
-// Add autocomplete to the text boxes
-var autocomplete_address = new google.maps.places.Autocomplete(address, options);
-
+$(document).ready(autocomplete);
 
 ////////////////////////////////////////////////////
 // Functions
 
-function syncDistanceValues(evt) {
+function syncDistanceValues() {
     var value = $(this).val();
-    $('.distance').val(value);
+    $('span.distance').text(value);
 }
 
 function postLocation() {
@@ -49,4 +38,18 @@ function getD3() {
         error: function() { alert( "An Error Occurred in getD3" ); }
     });
 
+}
+
+
+////////////////////////////////////////////////////
+// Goople Maps Autocomplete 
+
+
+function autocomplete() {
+    var address = document.getElementById('address');
+    var options = {
+        types: ['address'] 
+    };
+    // Add autocomplete to the text boxes
+    var autocomplete_address = new google.maps.places.Autocomplete(address, options);
 }

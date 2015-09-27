@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, flash, session, jsonify
 import os
 import googlemaps
+from betterdocinfo import build_ins_json
 
 
 app = Flask(__name__)
@@ -49,7 +50,8 @@ def make_doc_donut():
 	longitude = session.get('long')
 	radius = session.get('radius')
 
-
+	address_dict = build_ins_json(latitude,longitude,radius)
+	print address_dict
 
 	return jsonify(address_dict)
 

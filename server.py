@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, flash, session, jsonify
 import os
 import googlemaps
 
@@ -15,7 +15,7 @@ def home():
 
 @app.route('/locate', methods=["POST"])
 def locate_user():
-	""" uses google maps geocode to get lat/lon of address"""
+	""" uses google maps geocode to get lat/long of address inputted by user & the distance from address to search (radius)"""
 
 	gmapKey = os.environ.get('Google_Maps_API_Key')
 	gmaps = googlemaps.Client(key=gmapKey)
@@ -32,13 +32,24 @@ def locate_user():
 	
 	latitude = location_data.get('lat')
 	longitude = location_data.get('lng')
+	#input from user on radius from location to look at
 	radius = request.form.get("radius")
 
-	address_dict = {"lat": latitude, "long": longitude, "radius": radius}
+	#store location info needed in dictionary
+	session["lat"] = latitude
+	session["long"] = longitude
+	session["radius"] = radius
 
-	return
+	return "success"
 
 @app.route('/donut_docs.json', methods=["GET"])
+def make_doc_donut():
+
+	latitude = session.get('lat')
+	longitude = session.get('long')
+	radius = session.get('radius')
+
+
 
 	return jsonify(address_dict)
 

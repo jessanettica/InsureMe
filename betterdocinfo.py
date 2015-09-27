@@ -2,8 +2,9 @@ import requests
 import os
 
 def build_ins_json(lat, lon, urange):
-    """takes in area info and returns dictionary for server.py to jsonify for D3 request"""
 
+    """takes in area info and returns dictionary for server.py to jsonify for D3 request"""
+    insurances = query_for_insurance()
     return_dict = {}
     insurance_providers = []
     docs_by_rating = []
@@ -30,7 +31,7 @@ def build_ins_json(lat, lon, urange):
             else:
                 rating_dict = {"name": idx, "size": rate, "children": genders}
             ratings.append(rating_dict)
-        insurance_providers.append({"name": key, "size": value[0], "children": ratings})
+        insurance_providers.append({"name": insurances.get(key, key), "size": value[0], "children": ratings})
     print return_dict
     return return_dict
 
@@ -161,24 +162,38 @@ def query_for_doctors(lat, lon, urange):
 
     return doc_dict
 
+
 def query_for_insurance():
     """Show Insurance Information"""
-    r_insurance = requests.get("https://api.betterdoctor.com/2015-01-27/insurances").json()
-    num_pages = r_insurance['last_page']
-
-    query_params = {'apikey': '###'}
-    endpoint = 'https://api.betterdoctor.com/2015-01-27/insurances?&user_key=d9d6a34e907e4b42e1d4ad7a25f7998e'
-    response = requests.get(endpoint, params=query_params)
-    insurance_plans = response.json()['data']
-
     insurances = {}
+    query_params = {'user_key': 'd9d6a34e907e4b42e1d4ad7a25f7998e',
+                    'limit': '1'
+                    }
 
-    for insurance in insurance_plans:
-        insurance_id = insurance.get('plans')[0].get('uid')
-        insurance_name = insurance.get('plans')[0].get('name')
-        insurances[insurance_id]=insurance_name
+    response = requests.get("https://api.betterdoctor.com/2015-01-27/insurances", params=query_params)
+    # response = requests.get(endpoint, params=query_params)
+    num_responses = response.json()['meta'].get('total')
+    print "number of insurances: ", num_responses
 
+    for num in range(0, num_responses, 100):
+        print "num", num
+        query_params = {'user_key': 'd9d6a34e907e4b42e1d4ad7a25f7998e',
+                    'skip': str(num),
+                    'limit': '100'
+                    }
+        r_insurance = requests.get("https://api.betterdoctor.com/2015-01-27/insurances", params=query_params).json()
+
+        insurance_plans = r_insurance['data']
+
+
+        for insurance in insurance_plans:
+            insurance_id = insurance.get('plans')[0].get('uid')
+            insurance_name = insurance.get('plans')[0].get('name')
+            insurances[insurance_id]=insurance_name
+    print insurances
     return insurances
+
+
 
 # if __name__ == "__main__":
     

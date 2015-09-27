@@ -17,10 +17,10 @@ def build_ins_json(lat, lon, urange):
         genders = []
         for jdex, gender_count in enumerate(value[2]):
             if jdex == 0:
-                gender_dict = {"name": "male", "size": gender_count, "children": []}
+                gender_dict = {"name": "male", "size": gender_count}
                 genders.append(gender_dict)
             else:
-                gender_dict = {"name": "female", "size": gender_count, "children": []}
+                gender_dict = {"name": "female", "size": gender_count}
                 genders.append(gender_dict)
 
         ratings = []

@@ -14,7 +14,7 @@ var y = d3.scale.sqrt()
 var color = d3.scale.ordinal()
             .range(["#B93C93", "#7F2965", "#FF53CB", "#E54AB6", "#C684D9"])
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#sunburst").append("svg")
     .attr("width", width)
     .attr("height", height + 50)
   .append("g")
@@ -31,7 +31,7 @@ var arc = d3.svg.arc()
 
 d3.json("/donut_docs.json", function(error, root) {
   if (error) throw error;
-
+  $('#loading').addClass('hidden');
   var path = svg.selectAll("path")
       .data(partition.nodes(root))
     .enter().append("path")

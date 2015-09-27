@@ -18,10 +18,18 @@ html, body {
 
 .btn:hover {
 	color: white;
-	background-color: #962C76;
-	border: 1px solid #BB3794;
+	background-color: #8C2577;
+	border: 1px solid #8C2577;
 }
 
 .form-control {
 	border-radius: 3px;
+}
+
+.navbar-form * {
+	margin-left: 1em;
+}
+
+.navbar {
+	background-color: white;
 }

@@ -9,17 +9,18 @@
     <div class="container">
 
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">InsureMe</a>
+            <a class="navbar-brand" href="#">InsureMe</a>
         </div>
 
         <div class="collapse navbar-collapse">
             <form class="navbar-form">
                 <div class="form-group">
                     <label for="address-field" class="sr-only">Email Address</label>
-                    <input id="address" type="text" class="form-control" placeholder="Address">
+                    <input id="address" type="text" class="form-control" placeholder="Browse By Address">
                 </div>
                 <div class="form-group">
-                    <label for="distance-field">Max Distance From Address: <span class="distance">10</span> mi.</label>
+                    <label for="distance-field" class="sr-only">Radius</label>
+                    <span>Radius: <span class="distance">10</span> mi.</span>
                     <input id="distance" class="distance" type="range" min="1" max="50" value="10" step="1" style="display:inline-block"/>
                 </div>
                 <button id="search-btn" type="button" class="btn btn-default">Search</button>

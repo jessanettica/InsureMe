@@ -4,17 +4,18 @@
 $('.distance').on('input', syncDistanceValues);
 $('#search-btn').on('click', postLocation);
 $(document).ready(autocomplete);
-
+$(document).ready(showCarolyn);
 ////////////////////////////////////////////////////
 // Functions
+
 
 function syncDistanceValues() {
     var value = $(this).val();
     $('span.distance').text(value);
 }
 
-function postLocation() {
-
+function postLocation(evt) {
+    evt.preventDefault();
     $('#loading').removeClass('hidden');
 
     var locationData = {
@@ -26,23 +27,16 @@ function postLocation() {
         url: '/locate',
         method: 'POST',
         data: locationData,
-        success: getD3,
+        success: function () {
+            $('#loading').addClass('hidden');
+            getD3();
+        },
         error: function () {
             $('#loading').addClass('hidden');
             $('#failure-report').removeClass('hidden');
         }
     });
 }
-
-// function getD3() {
-
-//     $.ajax({
-//         url: '/get_d3',
-//         error: function() { console.log( "An Error Occurred in getD3" ); },
-//         complete: function () { $('#loading').addClass('hidden') }
-//     });
-
-// }
 
 // Goople Maps Autocomplete 
 function autocomplete() {

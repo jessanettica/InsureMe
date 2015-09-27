@@ -36,8 +36,22 @@ html, body {
 	background-color: white;
 }
 
-#logo {
+#logo-img {
 	padding: 7px 15px;
+}
+
+#logo-text-bold {
+	padding-left: 0;
+	color: #B93C93;
+	font-size: 24px;
+	font-family: Ubuntu;
+	font-weight: 500;
+}
+#logo-text-normal {
+	color: #B93C93;
+	font-size: 24px;
+	font-family: Ubuntu;
+	font-weight: 300;
 }
 
 span.distance {

@@ -1,15 +1,17 @@
 html, body {
 	height: 100%;
 	font-family: ProximaNovaReg, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	background-image: url('');
-	background-size: cover;
+	background-color: #F3F3F3;
 }
 
-#sidebar {
-	border: 1px solid #E7E7E7;
-	background-color: #F8F8F8;
-	height: 700px;
-	padding: 1em;
+.navbar, #info {
+	background-color: white;
+	box-shadow: 0px 1px 2px 0px rgba(200,200,200,0.3);
+	padding: 0.25em 1em;
+}
+
+.navbar-form * {
+	margin-left: 1em;
 }
 
 .btn {
@@ -28,29 +30,21 @@ html, body {
 	border-radius: 3px;
 }
 
-.navbar-form * {
-	margin-left: 1em;
-}
-
-.navbar {
-	background-color: white;
-}
-
 #logo-img {
-	padding: 7px 15px;
+	padding: 0.25em 0 0.25em 15px;
+}
+
+.logo-text {
+	color: #B93C93;
+	font-size: 40px;
+	font-family: Ubuntu;
 }
 
 #logo-text-bold {
 	padding-left: 0;
-	color: #B93C93;
-	font-size: 24px;
-	font-family: Ubuntu;
 	font-weight: 500;
 }
 #logo-text-normal {
-	color: #B93C93;
-	font-size: 24px;
-	font-family: Ubuntu;
 	font-weight: 300;
 }
 
@@ -66,4 +60,16 @@ span.distance {
 
 #loading {
 	width: 80px;
+}
+
+#address {
+	width: 25em;
+}
+
+#sunburst {
+	text-align: center;
+}
+
+#sunburst-col {
+	text-align: center;
 }

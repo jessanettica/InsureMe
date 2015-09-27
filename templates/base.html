@@ -5,18 +5,18 @@
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,500' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/static/insureme.css">
     <link rel="stylesheet" type="text/css" href="/static/donut_simple.css">
-
+    <title>InsureCare</title>
 </head>
 <body>
 <div class="navbar navbar-default navbar-static-top">
-    <div class="container">
+    <div class="container-fluid">
 
         <div class="navbar-header">
             <img id="logo-img" class="navbar-brand" src="/static/insureme.png">
-            <a id="logo-text" class="navbar-brand" style="padding-left: 0;" href="/"><span id="logo-text-bold">Insure</span><span id="logo-text-normal">Me</span></a>
+            <a class="navbar-brand" href="#"><span id="logo-text-bold" class="logo-text">Insure</span><span id="logo-text-normal" class="logo-text">Care</span></a>
         </div>
 
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse navbar-right">
             <form class="navbar-form">
                 <div class="form-group">
                     <label for="address-field" class="sr-only">Email Address</label>
@@ -35,29 +35,41 @@
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div id="status" class="col-xs-12">
+        <div id="sunburst-col" class="col-xs-9">
             <img id="loading" class="hidden" src="/static/loading.gif">
             <h4 id="failure-report" class="hidden">Oops! An error occurred.</h4>
+            <!-- sunbusrt graph below -->
+            <div id="sunburst"></div> 
+             
+            <!-- html below -->
+            <div id="tooltip" class=hidden>
+                <p><strong>Important Label Heading</strong>
+                </p>
+                <p><span id="value">100</span>%</p>
+            </div>
+        </div>
+        <div class="col-xs-3" id="info">
+            <h4>Information</h4>
+            <p>
+                InsureCare allows you to search by address, dynamically displaying data about insurance providers in your area.
+            </p>
+            <p>
+                On the innermost layer of the chart, discover which insurance providers cover the most doctors.
+            </p>
+            <p>
+                On the second layer, view the rating distribution among the doctors covered by each provider.
+            </p>
+            <p>
+                On the outermost layer, view the gender breakdown for each rating.
+            </p>
+            <p>
+                Make smarter decisions with InsureCare.
+            </p>
+            <h6><i>Powered by BetterDoctor</i></h6>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12"></div>
-    </div>
 </div>
 
-
-<!-- sunburt graph below -->
-<div id="sunburst"><img src=""></div> <!-- loading image -->  
- 
-<!-- html below -->
- 
-
-
-<div id="tooltip" class=hidden>
-    <p><strong>Important Label Heading</strong>
-    </p>
-    <p><span id="value">100</span>%</p>
-</div>
 
 
 <script src="/static/jquery-2.1.4.min.js"></script>

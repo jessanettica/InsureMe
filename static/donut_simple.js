@@ -10,11 +10,13 @@ var x = d3.scale.linear()
 var y = d3.scale.sqrt()
     .range([0, radius]);
 
-var color = d3.scale.category20c();
+// var color = d3.scale.category20c();
+var color = d3.scale.ordinal()
+            .range(["#B93C93", "#7F2965", "#FF53CB", "#E54AB6", "#C684D9"])
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
-    .attr("height", height)
+    .attr("height", height + 50)
   .append("g")
     .attr("transform", "translate(" + width / 2 + "," + (height / 2 + 10) + ")");
 
@@ -34,7 +36,8 @@ d3.json("/donut_docs.json", function(error, root) {
       .data(partition.nodes(root))
     .enter().append("path")
       .attr("d", arc)
-      .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
+      .style("fill", function(d) {return color(d.name);})
+      // .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
       .on("click", click);
 
   function click(d) {

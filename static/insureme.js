@@ -34,15 +34,15 @@ function postLocation() {
     });
 }
 
-function getD3() {
+// function getD3() {
 
-    $.ajax({
-        url: '/get_d3',
-        error: function() { console.log( "An Error Occurred in getD3" ); },
-        complete: function () { $('#loading').addClass('hidden') }
-    });
+//     $.ajax({
+//         url: '/get_d3',
+//         error: function() { console.log( "An Error Occurred in getD3" ); },
+//         complete: function () { $('#loading').addClass('hidden') }
+//     });
 
-}
+// }
 
 // Goople Maps Autocomplete 
 function autocomplete() {

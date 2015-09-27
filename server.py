@@ -21,9 +21,9 @@ def locate_user():
 
 	gmapKey = os.environ.get('Google_Maps_API_Key')
 	gmaps = googlemaps.Client(key=gmapKey)
-
 	address = request.form.get("address")
-	
+	print "************ address"
+
 	# Geocoding and address
 	geocode_result = gmaps.geocode(address)
 

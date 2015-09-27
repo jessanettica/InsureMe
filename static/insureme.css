@@ -1,6 +1,8 @@
 html, body {
 	height: 100%;
 	font-family: ProximaNovaReg, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	background-image: url('');
+	background-size: cover;
 }
 
 #sidebar {
@@ -18,6 +20,36 @@ html, body {
 
 .btn:hover {
 	color: white;
-	background-color: #962C76;
-	border: 1px solid #BB3794;
-};
+	background-color: #8C2577;
+	border: 1px solid #8C2577;
+}
+
+.form-control {
+	border-radius: 3px;
+}
+
+.navbar-form * {
+	margin-left: 1em;
+}
+
+.navbar {
+	background-color: white;
+}
+
+#logo {
+	padding: 7px 15px;
+}
+
+span.distance {
+	display: inline-block;
+	width: 1em;
+	text-align: right;
+}
+
+#status {
+	text-align: center;
+}
+
+#loading {
+	width: 80px;
+}

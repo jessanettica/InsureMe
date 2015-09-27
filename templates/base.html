@@ -9,27 +9,34 @@
     <div class="container">
 
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">InsureMe</a>
+            <img id="logo" class="navbar-brand" src="/static/insureme.png">
+            <a class="navbar-brand" href="#">InsureCare</a>
         </div>
 
         <div class="collapse navbar-collapse">
-            <form>
+            <form class="navbar-form">
                 <div class="form-group">
                     <label for="address-field" class="sr-only">Email Address</label>
-                    <input id="address" type="text" class="form-control" placeholder="Address">
+                    <input id="address" type="text" class="form-control" placeholder="Browse By Address">
                 </div>
                 <div class="form-group">
-                    <label for="distance-field" class="sr-only">Distance</label>
-                    <input id="distance-slider" class="distance" type="range" min="1" max="50" value="10" step="1" style="display:inline-block"/>
-                    <input id="distance" class="distance form-control" type="number" min="1" max="50" value="10" style="display:inline-block; width: 60px" required>
+                    <label for="distance-field" class="sr-only">Radius</label>
+                    <span>Radius:<span class="distance">10</span> mi.</span>
+                    <input id="distance" class="distance" type="range" min="1" max="50" value="10" step="1" style="display:inline-block"/>
                 </div>
                 <button id="search-btn" type="button" class="btn btn-default">Search</button>
             </form>
         </div>
-        
+
     </div>
 </div>
 <div class="container-fluid">
+    <div class="row">
+        <div id="status" class="col-xs-12">
+            <img id="loading" class="hidden" src="/static/loading.gif">
+            <h4 id="failure-report" class="hidden">Oops! An error occurred.</h4>
+        </div>
+    </div>
     <div class="row">
         <div class="col-xs-12"></div>
     </div>

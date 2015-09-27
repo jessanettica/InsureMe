@@ -28,15 +28,11 @@ var arc = d3.svg.arc()
     .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
 
 d3.json("/donut_docs.json", function(error, root) {
-<<<<<<< HEAD
-  var g = svg.selectAll("g")
-=======
   if (error) throw error;
   $('#loading').addClass('hidden');
   var path = svg.selectAll("path")
->>>>>>> c83685dd24af6fccd85c8872ff7f69570bb020bd
-      .data(partition.nodes(root))
-    .enter().append("g");
+    .data(partition.nodes(root))
+  .enter().append("g");
 
   var path = g.append("path")
     .attr("d", arc)

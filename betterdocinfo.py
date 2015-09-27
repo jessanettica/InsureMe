@@ -31,7 +31,7 @@ def build_ins_json(lat, lon, urange):
                 rating_dict = {"name": idx, "size": rate, "children": genders}
             ratings.append(rating_dict)
         insurance_providers.append({"name": key, "size": value[0], "children": ratings})
-
+    print return_dict
     return return_dict
 
 def query_for_doctors(lat, lon, urange):

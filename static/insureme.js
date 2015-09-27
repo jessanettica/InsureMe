@@ -4,9 +4,10 @@
 $('.distance').on('input', syncDistanceValues);
 $('#search-btn').on('click', postLocation);
 $(document).ready(autocomplete);
-
+$(document).ready(showCarolyn);
 ////////////////////////////////////////////////////
 // Functions
+
 
 function syncDistanceValues() {
     var value = $(this).val();
@@ -26,23 +27,15 @@ function postLocation(evt) {
         url: '/locate',
         method: 'POST',
         data: locationData,
-        success: getD3,
+        success: function () {
+            $('#loading').addClass('hidden');
+            getD3();
+        },
         error: function () {
             $('#loading').addClass('hidden');
             $('#failure-report').removeClass('hidden');
         }
     });
-}
-
-function getD3() {
-
-    $.ajax({
-        url: '/get_d3',
-        success: function (response) { console.log('response') },
-        error: function () { $('#failure-report').removeClass('hidden') },
-        complete: function () { $('#loading').addClass('hidden') }
-    });
-
 }
 
 // Goople Maps Autocomplete 

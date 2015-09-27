@@ -2,15 +2,18 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="/static/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,500' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/static/insureme.css">
+    <link rel="stylesheet" type="text/css" href="/static/donut_simple.css">
+
 </head>
 <body>
 <div class="navbar navbar-default navbar-static-top">
     <div class="container">
 
         <div class="navbar-header">
-            <img id="logo" class="navbar-brand" src="/static/insureme.png">
-            <a class="navbar-brand" href="/">InsureCare</a>
+            <img id="logo-img" class="navbar-brand" src="/static/insureme.png">
+            <a id="logo-text" class="navbar-brand" style="padding-left: 0;" href="/"><span id="logo-text-bold">Insure</span><span id="logo-text-normal">Me</span></a>
         </div>
 
         <div class="collapse navbar-collapse">
@@ -42,10 +45,30 @@
     </div>
 </div>
 
+
+<!-- sunburt graph below -->
+<div id="sunburst"><img src=""></div> <!-- loading image -->  
+ 
+<!-- html below -->
+ 
+
+
+<div id="tooltip" class=hidden>
+    <p><strong>Important Label Heading</strong>
+    </p>
+    <p><span id="value">100</span>%</p>
+</div>
+
+
 <script src="/static/jquery-2.1.4.min.js"></script>
 <script src="/static/googlemaps.js"></script>
 <script src="/static/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+
+<script src="/static/donut_simple.js"></script>
 <script src="/static/insureme.js"></script>
+
+
 
 </body>
 </html>

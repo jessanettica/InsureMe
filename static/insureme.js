@@ -4,7 +4,7 @@
 $('.distance').on('input', syncDistanceValues);
 $('#search-btn').on('click', postLocation);
 $(document).ready(autocomplete);
-$(document).ready(showCarolyn);
+
 ////////////////////////////////////////////////////
 // Functions
 

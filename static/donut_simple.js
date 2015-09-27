@@ -10,13 +10,15 @@ var x = d3.scale.linear()
 var y = d3.scale.linear()
     .range([0, radius]);
 
-var color = d3.scale.category20c();
+// var color = d3.scale.category20c();
+var color = d3.scale.ordinal()
+            .range(["#B93C93", "#7F2965", "#FF53CB", "#E54AB6", "#C684D9"])
 
 var svg = d3.select("#sunburst").append("svg")
-.attr("width", width)
-.attr("height", height)
-.append("g")
-.attr("transform", "translate(" + width / 2 + "," + (height / 2 + 10) + ")");
+    .attr("width", width)
+    .attr("height", height + 50)
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + (height / 2 + 10) + ")");
 
 var partition = d3.layout.partition()
     .value(function(d) { return d.size; });
@@ -29,6 +31,11 @@ var arc = d3.svg.arc()
 
 d3.json("/donut_docs.json", function(error, root) {
   if (error) throw error;
+
+    var g = svg.selectAll("g")
+      .data(partition.nodes(root))
+    .enter().append("g");
+
   $('#loading').addClass('hidden');
   var path = svg.selectAll("path")
     .data(partition.nodes(root))
@@ -36,7 +43,7 @@ d3.json("/donut_docs.json", function(error, root) {
 
   var path = g.append("path")
     .attr("d", arc)
-    .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
+    .style("fill", function(d) { return color(d.name); })
     .on("click", click);
 
   var text = g.append("text")
@@ -45,6 +52,7 @@ d3.json("/donut_docs.json", function(error, root) {
     .attr("dx", "6") // margin
     .attr("dy", ".35em") // vertical-align
     .text(function(d) { return d.name; });
+
 
   function click(d) {
     // fade out all text elements

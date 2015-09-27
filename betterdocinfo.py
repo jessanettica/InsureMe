@@ -21,6 +21,8 @@ def build_ins_json(lat, lon, urange):
 
 def query_for_doctors(lat, lon, urange):
     """Show Doctor Information filtered by location"""
+    
+    #TODO: put cap on number we query in case we get area that has lots of docs.  Maybe cap at 
 
     query_params = {'user_key': 'd9d6a34e907e4b42e1d4ad7a25f7998e',
                     'location': str(lat)+","+str(lon)+","+str(urange),
@@ -32,7 +34,7 @@ def query_for_doctors(lat, lon, urange):
     response = requests.get(endpoint, params=query_params)
     num_responses = response.json()['meta'].get('total')
     print "num_responses", num_responses
-    
+    #TODO: limit number of loops - if num_responses > 1,000 then do 10 requests, 100 at a time. else. just loop through all per below
     for num in range(1, num_responses, 100):
         limit = num
         query_params = {'user_key': 'd9d6a34e907e4b42e1d4ad7a25f7998e',

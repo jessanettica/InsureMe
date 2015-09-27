@@ -10,6 +10,7 @@ We built a tool to help people decide what insurance provider will give them acc
 
 ## Table of Contents
 * [Technologies Used](#technologiesused)
+* [How to Run InsureCare Locally](#run)
 * [Version 2.0](#v2)
 * [Authors](#authors)
 * [Resources](#resources)
@@ -25,6 +26,19 @@ We built a tool to help people decide what insurance provider will give them acc
 
 (dependencies are listed in requirements.txt)
 
+## <a name="run"></a>How to Run InsureCare Locally
+  * Clone the InsureMe repo
+  * Set up and activate a python virtualenv in the InsureMe directory on your computer, and install all dependencies:
+    * `virtualenv env`
+    * `source env/bin/activate`
+    * `pip install -r requirements.txt`
+  * You need a Google Maps API key to run this project. Once you have a key, export it into your shell env like this:
+  	* `export Google_Maps_API_Key="<your key>"`
+  * Start up the flask server:
+    * `python server.py`
+  * Go to localhost:5000 to see the web app
+ 
+  
 ## <a name="v2"></a>Version 2.0
 Considering that you may need to see more than one type of provider depending on how complicated your healthcare needs are, InsureCare 2.0 would also show the specialties of doctors available in a particular area. 
 

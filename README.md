@@ -43,7 +43,7 @@ We built a tool to help people decide what insurance provider will give them acc
 Considering that you may need to see more than one type of provider depending on how complicated your healthcare needs are, InsureCare 2.0 would also show the specialties of doctors available in a particular area. 
 
 ## <a name="authors"></a>Authors
-InsureCare was built during a two-day hackathon during the Integrate 2015 Conference.
+InsureCare was built during a two-day hackathon during the Integrate 2015 Conference. It won the BetterDoctor challenge and placed Top Five Overall. 
 Jessica Anette Lopez, Amanda Meurer, Carolyn Lee, and Corey Shott are software engineers in San Francisco, CA.
 
 ## <a name="resources"></a>Resources
